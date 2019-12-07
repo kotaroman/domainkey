@@ -1,7 +1,7 @@
 # domainkey
 domainkey for qmail
 
-I tried to support 2048bit DKIM.  
+I tried to support the domainkey command for 2048bit.
 TXT record for BIND is automatically set to 2 lines.
 
 original shell command  
