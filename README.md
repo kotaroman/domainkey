@@ -1,0 +1,2 @@
+# domainkey
+domainkey for qmail
