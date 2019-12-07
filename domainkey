@@ -53,7 +53,7 @@ function split_str () {
 
         if [ $START -ne 0 ]; then
             OPTION="-e"
-            if [ ${#STR_COUNT} -ne $SPLIT ]; then
+            if [ ${#LINE} -ne $SPLIT ]; then
                 OPTION="-en"
             fi
             echo $OPTION "\t\"${LINE}\""
