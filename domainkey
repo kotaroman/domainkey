@@ -32,15 +32,18 @@ CHOWN_USER_GROUP="vpopmail.vchkpw"
 
 function split_str () {
 
-    DOMAIN=$1
-    STR="`grep -v -e "^-" $CONFIGDIR/$DOMAIN/rsa.public_$SELECTOR | tr -d "\n"`"
-    STR="v=DKIM1; k=rsa; t=y; p=${STR}"
+    local DOMAIN=$1
+    local STR="`grep -v -e "^-" $CONFIGDIR/$DOMAIN/rsa.public_$SELECTOR | tr -d "\n"`"
+    local STR="v=DKIM1; k=rsa; t=y; p=${STR}"
+    local START=0
+    local STR_COUNT=0
+    local LINE=""
+    local OPTION=""
 
-    if [ $BIT = 2048 ]; then
+    if [ ${#STR} -gt $SPLIT ]; then
         echo -n "("
     fi
 
-    STR_COUNT=0
     while true
     do
         START=$STR_COUNT
@@ -62,7 +65,7 @@ function split_str () {
         fi
     done
 
-    if [ $BIT = 2048 ]; then
+    if [ ${#STR} -gt $SPLIT ]; then
         echo -n ")"
     fi
 }
